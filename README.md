@@ -26,5 +26,5 @@
 2. Check that all the files you need are in the **Changes** menu to the left (there might be **more files**, as Unity has some extras)
 3. Write a short **summary** and **description** down below
 4. Press the **Commit to main**
-5. Press the huge **Push to origin** (or something like that) button in the top bar.
+5. Press the huge **Push to origin** (or something like that) blue button (sometimes this might say **Pull from Origin** first, just trust it!).
 6. You are good! Everyone else... see you in the 🐝-prog-hive.
