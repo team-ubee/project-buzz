@@ -8,8 +8,8 @@ public class TeaserStateDefinition : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         LevelManager.Instance.Generate(Rooms.Get("Corridors"), null, 5);
-        LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 2);
-        LevelManager.Instance.Generate(Rooms.Get("Corridors"), null, 2);
+        LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 1);
+        LevelManager.Instance.Generate(Rooms.Get("Wolf"), null, 1);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
