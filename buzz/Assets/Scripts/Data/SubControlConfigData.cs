@@ -3,16 +3,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SubControlConfig", menuName = "Data/SubControlConfig")]
 public class SubControlConfigData : ScriptableObject
 {
-    [Header("Turning")]
-    public float HorizontalSpeed = 1.0f;
-    public float VerticalSpeed = 1.0f;
-    public float PitchSpeed = 1.0f;
+    [Header("Meta")]
+    public float ThrottleReactionSpeed = 0.5f;
 
-    [Space]
-    [Header("Engine")]
-    public float MovementSpeed = 1.0f;
+    [Header("Steering")]
+    [SerializeField] public float BankLimit = 35f;
+    [SerializeField] public float PitchSensitivity = 2.5f;
+    [SerializeField] public float YawSensitivity = 2.5f;
+    [SerializeField] public float RollSensitivity = 1f;
 
-    [Space]
-    [Header("Physics")]
-    public float Inertia = 0.0f;
+    [Header("Inputs")]
+    public string StrafeAxis = "Horizontal";
+    public string MouseThrottleAxis = "Mouse ScrollWheel";
+    public KeyCode IncreaseSpeedKey = KeyCode.W;
+    public KeyCode DecreaseSpeedKey = KeyCode.S;
 }
