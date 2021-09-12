@@ -3,34 +3,41 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject[] Pieces;
-    public int Depth;
+    public static LevelManager Instance;
 
     public void Awake()
     {
-        foreach(var piece in Pieces)
+        Instance = this;
+
+/*        foreach(var piece in Pieces)
         {
-            if (piece.transform.Find("Pivot Next") == null)
+            if (piece.Prefab.transform.Find("Pivot Next") == null)
             {
-                throw new System.Exception("Object has to have a transform called 'Pivot Next' within.");
+                Debug.LogError("Object has to have a transform called 'Pivot Next' within.");
             }
-        }
+
+            // this.gameObject.GetComponent<Animator>().SetTrigger("playerHasSelectedAStory");
+        }*/
     }
 
-    public void Start()
+    private Vector3 _CurrentPosition = Vector3.zero;
+  
+    public void Generate(GameObject[] pieces, GameObject[] storyElements, int depth)
     {
-        Vector3 currentPosition = Vector3.zero;
+        // todo: izaberi random story (ili dva)
+        // todo: izgenerisi prvih X soba (LOD fazon)
 
-        for (int i = 0; i < Depth; i++)
+        for (int i = 0; i < depth; i++)
         {
-            var piece = Pieces[Random.Range(0, Pieces.Length)];
-            var nextPart = Instantiate(piece, currentPosition, Quaternion.identity) as GameObject;
-
+            var piece = pieces[Random.Range(0, pieces.Length)];
+            var nextPart = GameObject.Instantiate(piece, _CurrentPosition, Quaternion.identity) as GameObject;
             // TODO: nextPart can now be decorated additionally here
             //      so that it gets attached to triggers, other smaller pieces,
             //      light emitters, etc.
 
-            currentPosition += piece.transform.Find("Pivot Next").transform.localPosition;
+            // nextPart.transform.Find("Hole 1").gameObject
+
+            _CurrentPosition += piece.transform.Find("Pivot Next").transform.localPosition;
         }
     }
 }
