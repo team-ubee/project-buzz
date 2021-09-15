@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:buzz/Assets/Underwater Plants.meta
+guid: 1494a3a7d975edd49ac78562805c7062
+=======
 guid: 1b9b9040af5dbab4fa48d932c31e7a40
+>>>>>>> d8391088f40e8fbb5bff9958a59aaa0b361afef8:buzz/Assets/Downloads/SineVFX/TranslucentCrystals/_SRP/TranslucentCrystals_HDRP_Patch.unitypackage.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
