@@ -30,6 +30,11 @@ public class SubInput : MonoBehaviour
 
         UpdateMouseWheelThrottle();
         UpdateKeyboardThrottle(Config.IncreaseSpeedKey, Config.DecreaseSpeedKey);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void SetStickCommandsUsingAutopilot()

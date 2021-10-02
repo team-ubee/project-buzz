@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class TeaserStateDefinition : StateMachineBehaviour
 {
-    public void GoodCorridor()
+    static int Hints = 0;
+
+    public void GoodCorridor(int depth = 1)
     {
-        for (int i = 1; i < 3; i++)
-        {
-            LevelManager.Instance.Generate(Rooms.Get("Corridors"), null, Random.Range(1, 5));
-            LevelManager.Instance.Generate(Rooms.Get("Openings"), null, Random.Range(0, 1));
-        }
+        LevelManager.Instance.Generate(Rooms.Get("Empty"), null, Random.Range(5, 9));
+        Hints += LevelManager.Instance.Generate(Rooms.Get("Corridors"), null, depth);
+        LevelManager.Instance.Generate(Rooms.Get("Empty"), null, Random.Range(5, 9));
+        LevelManager.Instance.Generate(Rooms.Get("Openings"), null, 1);
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        LevelManager.Instance.Generate(Rooms.Get("Start"), null, 3);
-        GoodCorridor();
-        LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 1);
-        GoodCorridor();
-        LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 1);
-        GoodCorridor();
-        LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 1);
+        Hints += LevelManager.Instance.Generate(Rooms.Get("Start"), null, 3);
+        GoodCorridor(6);
+        Hints += LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 1);
+        GoodCorridor(3);
+        GoodCorridor(4);
+        Hints += LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 1);
+        GoodCorridor(3);
+        Hints += LevelManager.Instance.Generate(Rooms.Get("Big Rooms"), null, 1);
+        GoodCorridor(5);
         LevelManager.Instance.Generate(Rooms.Get("Wolf"), null, 1);
     }
 

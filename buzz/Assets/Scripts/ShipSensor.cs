@@ -20,6 +20,7 @@ public class ShipSensor : MonoBehaviour
             {
                 _Interest = ofInterest;
                 OnStartedScanning.Invoke();
+                Debug.Log("STARTING");
             }
         }
     }
@@ -30,6 +31,7 @@ public class ShipSensor : MonoBehaviour
         {
             _Interest = null;
             OnEndedScanning.Invoke();
+            Debug.Log("STOPPED");
         }
     }
 
@@ -37,6 +39,7 @@ public class ShipSensor : MonoBehaviour
     {
         if (_Interest != null)
         {
+            Debug.Log(_Interest.Mystery);
             if (_Interest.Mystery > 0)
             {
                 _Interest.Mystery--;
@@ -45,7 +48,7 @@ public class ShipSensor : MonoBehaviour
             {
                 OnScanSuccessful.Invoke();
                 OnEndedScanning.Invoke();
-                this.BroadcastMessage("MysteryDiscovered");
+                DestroyImmediate(_Interest.gameObject);
                 _Interest = null;
             }
         }

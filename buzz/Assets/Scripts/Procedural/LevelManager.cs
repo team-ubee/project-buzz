@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
 
     private Vector3 _CurrentPosition = Vector3.zero;
   
-    public void Generate(GameObject[] pieces, GameObject[] storyElements, int depth)
+    public int Generate(GameObject[] pieces, GameObject[] storyElements, int depth)
     {
         // todo: izaberi random story (ili dva)
         // todo: izgenerisi prvih X soba (LOD fazon)
@@ -39,6 +39,8 @@ public class LevelManager : MonoBehaviour
 
             _CurrentPosition += piece.transform.Find("Pivot Next").transform.localPosition;
         }
+
+        return depth;
     }
 }
 
